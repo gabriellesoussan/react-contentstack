@@ -1,4 +1,4 @@
-import { Img, Link, Url } from "./pages";
+import { Button, Img, Link, Url } from "./pages";
 
 export type FooterRes = {
   uid: string;
@@ -21,13 +21,7 @@ export type BannerRes = {
   uid: string;
   title: string;
   background_image?: Img;
-  button: {
-    label: string;
-    url: Url[];
-    button_type: string;
-    button_icon: string;
-    icon_alignment: string;
-  }
+  button: Button;
 $?: BannerRes;
 };
 

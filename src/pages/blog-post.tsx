@@ -10,6 +10,7 @@ import Skeleton from "react-loading-skeleton";
 import { useLivePreviewCtx } from "../context/live-preview-context-provider";
 import { BlogPostRes, Page } from "../typescript/pages";
 import { EntryProps } from "../typescript/components";
+import { Button } from "@contentstack/venus-components";
 
 export default function BlogPost({entry}:{entry:({page, blogPost}:EntryProps)=> void}) {
   const lpTs = useLivePreviewCtx();
@@ -26,6 +27,7 @@ export default function BlogPost({entry}:{entry:({page, blogPost}:EntryProps)=> 
       const entryUrl = blogId ? `/blog/${blogId}` : "/";
       const banner = await getPageRes("/blog");
       const post = await getBlogPostRes(entryUrl);
+      console.log(post);
       (!banner || !post) && setError(true);
       setEntry({ banner, post });
       entry({ page: [banner], blogPost: [post] });
@@ -101,6 +103,17 @@ export default function BlogPost({entry}:{entry:({page, blogPost}:EntryProps)=> 
             ) : (
               <Skeleton width={300} height={500} />
             )}
+            {post.button ? (
+              <Button
+                buttonType={post?.button.button_type}
+                size = {post?.button.size}
+              >
+                {post?.button.label}
+              </Button>
+            ) : (
+              <div></div>
+            )}
+            
           </div>
         </div>
       </div>

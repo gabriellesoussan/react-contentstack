@@ -17,6 +17,15 @@ export type SEO = {
   $: SEO;
 };
 
+export type Button = {
+    label: string;
+    url: Url[];
+    button_type: string;
+    button_icon: string;
+    icon_alignment: string;
+    size: string;
+}
+
 export type Img = {
   url: string;
   uid: string;
@@ -67,5 +76,6 @@ export type BlogPostRes = {
   featured_image: Img;
   related_post: BlogPostRes[];
   is_archived: boolean;
+  button: Button;
   $: BlogPostRes;
 };
